@@ -29,10 +29,10 @@ const AuthProvider = ({ children }) => {
     //     return signInWithPopup(auth, googleProvider);
     // }
 
-    // const logOut = () => {
-    //     setLoading(true)
-    //     return signOut(auth);
-    // }
+    const logOut = () => {
+        setLoading(true)
+        return signOut(auth);
+    }
 
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
         // googleSignIn,
         createUser,
         loginUser,
-        // logOut,
+        logOut,
         updateUserProfile
     }
     return (
