@@ -9,6 +9,7 @@ const Navbar = () => {
         <li className='text-xl font-bold'><Link>Classes</Link></li>
         <li className='text-xl font-bold'><Link>Dashboard</Link></li>
         <li className='text-xl font-bold'><Link to="/login">Login</Link></li>
+        <li className='text-xl font-bold'><Link to="/signup">SignUp</Link></li>
     </>
     return (
         <>
