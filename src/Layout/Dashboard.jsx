@@ -1,54 +1,54 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
+import useAdmin from '../hooks/useAdmin';
+import useInStructor from '../hooks/useInStructor';
+
 
 const Dashboard = () => {
-    const isAdmin = true;
-    // const isInstructor = true;
+    // const isAdmin = true;
 
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInStructor();
+    // const isInstructor = true;
+    // const isAdmin = false;
+    // const isInstructor = true;
+    console.log("admin", isAdmin)
+    console.log("instructor", isInstructor)
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
-                {/* Page content here */}
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+            <div className="drawer-content  mt-32 ml-10">
 
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 <Outlet></Outlet>
 
             </div>
-            <div className="drawer-side bg-black">
+            <div className="drawer-side bg-black ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 bg-black text-white  text-base-content">
+                <ul className="menu p-4 w-80 text-white ">
 
-
-
-
-                    {/* Sidebar content here */}
                     {isAdmin ? (
-                        <li>
-                            <NavLink to="/dashboard/manageUsers">
-                                <FaHome />
-                                Admin Homee
-                            </NavLink>
+                        <><li><NavLink to="/dashboard/manageclasses">Manage Classes</NavLink>
                         </li>
+                            <li><NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
+                            </li></>
                     ) : isInstructor ? (
-                        <li>
-                            <NavLink to="/dashboard/instructorhome">
-                                <FaHome />
-                                Instructor Home
-                            </NavLink>
-                        </li>
+                        <><li><NavLink to="/dashboard/addAClass">Add a Class</NavLink></li>
+                            <li><NavLink to="/dashboard/myClasses">My Classes</NavLink></li>
+                        </>
                     ) : (
-                        <li><NavLink>student</NavLink></li>
+                        <>
+                            <li><NavLink to="/dashboard/mySelectedClasses">My Selected Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myEnrollClasses">My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/history"> Payment History</NavLink></li>
+                        </>
                     )}
 
+                    <div className="divider"></div>
 
-                    <div className='divider'></div>
-                    <li><NavLink to='/'> <FaHome></FaHome>Home</NavLink></li>
-                    <li><NavLink to='/menu'>Our Menu</NavLink></li>
-                    <li><NavLink to='/order/salad'>Order</NavLink></li>
+                    <li><NavLink to="/"><FaHome />Home</NavLink></li>
                 </ul>
-
             </div>
         </div>
     );

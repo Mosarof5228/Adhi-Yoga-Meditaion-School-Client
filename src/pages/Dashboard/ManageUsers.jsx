@@ -53,27 +53,27 @@ const ManageUsers = () => {
     return (
         <div className="w-full">
             <h3 className="text-3xl font-semibold my-4">Total Users : {users.length}</h3>
-            <div className="overflow-x-auto">
-                <table className="table table-zebra w-full">
+            <div className="overflow-x-auto mx-auto">
+                <table className="table table-zebra w-full mx-auto">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className='bg-green-500 text-white'>
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {
                             users.map((user, index) => <tr key={user._id}>
-                                <th>{index + 1}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role === 'admin' ? 'admin' : <button onClick={() => handleAdmin(user)} className="btn bg-black text-white hover:bg-blue-600">
-                                    Make Admin
+                                <th className='bg-yellow-500'>{index + 1}</th>
+                                <td className='bg-yellow-500'>{user.name}</td>
+                                <td className='bg-yellow-300'>{user.email}</td>
+                                <td className='bg-yellow-300'>{user.role === 'admin' ? 'admin' : <button onClick={() => handleAdmin(user)} className="btn bg-purple-400 mx-4 text-white hover:bg-blue-600 border-red-700">
+                                    Create Admin
                                 </button>}
-                                    {user.role === 'instructor' ? 'instructor' : <button onClick={() => handleInstructor(user)} className="btn ml-5 bg-black text-white hover:bg-blue-600">Make Instructor</button>}
+                                    {user.role === 'instructor' ? 'instructor' : <button onClick={() => handleInstructor(user)} className="btn ml-5  text-white hover:bg-blue-600 bg-blue-300">Make Instructor</button>}
 
                                 </td>
                             </tr>)

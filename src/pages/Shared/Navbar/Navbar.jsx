@@ -1,10 +1,21 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [axiosSecure] = useAxiosSecure();
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
+        const res = await axiosSecure.get('/users')
+        return res.data;
+    });
+
+    const singleUser = users?.find(u => u?.email === user?.email);
+
     const handleLogOUt = () => {
         logOut()
             .then(() => { })
@@ -15,6 +26,8 @@ const Navbar = () => {
         <li className='text-xl font-bold'><Link>Home</Link></li>
         <li className='text-xl font-bold'><Link>Instructors</Link></li>
         <li className='text-xl font-bold'><Link>Classes</Link></li>
+
+
 
         {
             user ? <>

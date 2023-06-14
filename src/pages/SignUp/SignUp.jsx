@@ -10,7 +10,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 const SignUp = () => {
 
     const { createUser, updateUserProfile, } = useContext(AuthContext)
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
     const onSubmit = data => {
@@ -31,7 +31,7 @@ const SignUp = () => {
                             .then(res => res.json())
                             .then(data => {
                                 if (data.insertedId) {
-                                    // reset();
+                                    reset();
                                     Swal.fire({
                                         position: 'top-end',
                                         icon: 'success',
