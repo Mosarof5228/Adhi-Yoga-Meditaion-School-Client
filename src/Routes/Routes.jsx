@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
 import AddAClass from "../pages/Dashboard/Instructor/AddAClass";
 
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses";
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
             {
                 path: 'myClasses',
                 element: <MyClasses></MyClasses>
+            },
+            {
+                path: 'manageClasses',
+                element: <ManageClasses></ManageClasses>
             }
         ]
     }

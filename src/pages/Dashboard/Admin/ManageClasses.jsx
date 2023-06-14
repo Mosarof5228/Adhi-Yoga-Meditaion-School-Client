@@ -1,18 +1,38 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React from 'react';
+import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { AuthContext } from '../../../providers/AuthProvider';
 
-const MyClasses = () => {
-    const { user } = useContext(AuthContext);
+const ManageClasses = () => {
+
     const [axiosSecure] = useAxiosSecure();
-    const { data: MyClasses = [] } = useQuery(['MyClasses'], async () => {
-        const res = await axiosSecure.get(`/myClasses?email=${user?.email}`)
-        console.log(MyClasses)
+    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
+        const res = await axiosSecure.get('/classes')
         return res.data;
     })
-    return (
 
+    const handleApproved = (id) => {
+        console.log(id);
+        fetch(`http://localhost:5000/classes?id=${id}&status=approved`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'ok',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+                }
+            })
+    };
+
+    return (
         <div className="overflow-x-auto w-full">
             <table className="table">
                 {/* head */}
@@ -23,19 +43,20 @@ const MyClasses = () => {
                                 #
                             </label>
                         </th>
-                        <th>Image  Name</th>
-                        <th>Instructor email</th>
+                        <th>className</th>
+                        <th>instructorName</th>
                         <th>Available seats</th>
                         <th>Price</th>
                         <th>Status</th>
                         <th>Feedback</th>
                         <th>Enrolled Student</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        MyClasses.map((cls, index) => <tr key={cls._id}>
+                        classes.map((cls, index) => <tr key={cls._id}>
                             <th>
                                 <label>
                                     {index + 1}
@@ -55,20 +76,22 @@ const MyClasses = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td>{cls.instructorEmail}</td>
+                            <td>{cls.instructorName}</td>
                             <td className="text-center">{cls.seats}</td>
                             <td>{cls.price}</td>
                             <td>{cls.status}</td>
+
                             <td>{cls.feedback}</td>
+
                             <td className="text-center">{cls.totalStudent}</td>
+                            <td><button onClick={() => handleApproved(cls._id)}>Approved</button></td>
 
                         </tr >)
                     }
                 </tbody >
             </table >
         </div >
-
     );
 };
 
-export default MyClasses;
+export default ManageClasses;
