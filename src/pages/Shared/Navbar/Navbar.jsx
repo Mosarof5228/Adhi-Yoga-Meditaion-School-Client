@@ -24,8 +24,8 @@ const Navbar = () => {
 
     const navOption = <>
         <li className='text-xl font-bold'><Link>Home</Link></li>
-        <li className='text-xl font-bold'><Link>Instructors</Link></li>
-        <li className='text-xl font-bold'><Link>Classes</Link></li>
+        <li className='text-xl font-bold'><Link to='/classes'>Instructors</Link></li>
+        <li className='text-xl font-bold'><Link to='/instructor'>Classes</Link></li>
 
 
 

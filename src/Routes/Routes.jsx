@@ -8,9 +8,12 @@ import AddAClass from "../pages/Dashboard/Instructor/AddAClass";
 
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses";
 import ManageUsers from "../pages/Dashboard/ManageUsers";
+import MySelectedClasses from "../pages/Dashboard/MySelectedClasses/MySelectedClasses";
 import Home from "../pages/Home/Home/Home";
 import LogIn from "../pages/LogIn/LogIn";
 import SignUp from "../pages/SignUp/SignUp";
+import Classes from "../pages/Users/Classes";
+import Instructor from "../pages/Users/Instructor";
 
 
 
@@ -30,6 +33,14 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <LogIn></LogIn>
+            },
+            {
+                path: 'classes',
+                element: <Classes></Classes>
+            },
+            {
+                path: 'instructor',
+                element: <Instructor></Instructor>
             }
 
         ]
@@ -53,7 +64,12 @@ export const router = createBrowserRouter([
             {
                 path: 'manageClasses',
                 element: <ManageClasses></ManageClasses>
-            }
+            },
+            {
+                path: 'mySelectedClasses',
+                element: <MySelectedClasses></MySelectedClasses>
+            },
+
         ]
     }
 ]);
