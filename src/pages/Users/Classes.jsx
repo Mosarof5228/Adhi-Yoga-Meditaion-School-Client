@@ -7,7 +7,7 @@ const Classes = () => {
     const [data, setData] = useState([]);
     console.log(data)
     useEffect(() => {
-        fetch('http://localhost:5000/approvedClasses')
+        fetch('https://adhi-yoga-meditation-school-server.vercel.app/approvedClasses')
             .then(res => res.json())
             .then(data => setData(data));
     }, [])

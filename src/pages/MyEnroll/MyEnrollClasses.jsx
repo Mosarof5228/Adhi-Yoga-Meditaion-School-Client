@@ -9,7 +9,7 @@ const MyEnrollClasses = () => {
     const [enrollClass, setEnrollClass] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/enrolled/${user.email}`)
+        fetch(`https://adhi-yoga-meditation-school-server.vercel.app/enrolled/${user.email}`)
             .then(res => res.json())
             .then(data => setEnrollClass(data))
     }, [])

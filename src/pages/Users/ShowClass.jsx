@@ -16,7 +16,7 @@ const ShowClass = ({ singleData }) => {
                 classImage, className, email: user.email, instructorName, price, seats, classId: _id
             }
 
-            fetch('http://localhost:5000/selectedClass', {
+            fetch('https://adhi-yoga-meditation-school-server.vercel.app/selectedClass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

@@ -6,9 +6,9 @@ import { AuthContext } from '../../../../providers/AuthProvider';
 
 const PaymentHistory = () => {
     const { user } = useContext(AuthContext);
-    const [paymentHistory, setPaymentHistory] = useState();
+    const [paymentHistory, setPaymentHistory] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/paymentHistory/${user.email}`)
+        fetch(`https://adhi-yoga-meditation-school-server.vercel.app/history/${user?.email}`)
             .then(res => res.json())
             .then(data => setPaymentHistory(data))
     }, [])
