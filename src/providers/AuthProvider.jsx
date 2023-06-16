@@ -41,26 +41,50 @@ const AuthProvider = ({ children }) => {
         })
     }
 
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    //         setUser(currentUser);
+    //         console.log('current User', currentUser);
+    //         if (currentUser) {
+    //             axios.post('https://adhi-yoga-meditation-school-server.vercel.app/jwt', { email: currentUser?.email })
+    //                 .then(data => {
+    //                     console.log(data.data.token);
+    //                     localStorage.setItem('access-token', data.data.token);
+    //                     setLoading(false);
+    //                 })
+    //         }
+    //         else {
+    //             localStorage.removeItem('access-token')
+    //         }
+    //     })
+    //     return () => {
+    //         return unsubscribe();
+    //     }
+    // }, [])
+
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
-            console.log('current User', currentUser);
-            if (currentUser) {
-                axios.post('https://adhi-yoga-meditation-school-server.vercel.app/jwt', { email: currentUser.email })
-                    .then(data => {
+        const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
+            setUser(loggedInUser);
+            // setInitialAuthChecked(true);
+            console.log(loggedInUser);
+            if (loggedInUser) {
+                axios
+                    .post('https://adhi-yoga-meditation-school-server.vercel.app/jwt', { email: loggedInUser?.email })
+                    .then((data) => {
                         console.log(data.data.token);
                         localStorage.setItem('access-token', data.data.token);
                         setLoading(false);
-                    })
+                    });
+            } else {
+                localStorage.removeItem('access-token');
             }
-            else {
-                localStorage.removeItem('access-token')
-            }
-        })
+        });
+
         return () => {
-            return unsubscribe();
-        }
-    }, [])
+            unSubscribe();
+        };
+    }, []);
+
 
     const authInfo = {
         user,

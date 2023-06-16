@@ -1,20 +1,21 @@
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+// import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [axiosSecure] = useAxiosSecure();
-    const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('/users')
-        return res.data;
-    });
+    console.log(user?.photoURL)
+    // const [axiosSecure] = useAxiosSecure();
+    // const { data: users = [], refetch } = useQuery(['users'], async () => {
+    //     const res = await axiosSecure.get('/users')
+    //     return res.data;
+    // });
 
-    const singleUser = users?.find(u => u?.email === user?.email);
+    // const singleUser = users?.find(u => u?.email === user?.email);
 
     const handleLogOUt = () => {
         logOut()
@@ -58,7 +59,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <img className='w-7 h-7 rounded-full' src={user?.photoURL} alt="" />
                 </div>
             </div>
 

@@ -2,12 +2,13 @@ import React from 'react';
 import { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const LogIn = () => {
 
-    const navigate = useNavigate();
-    const location = useLocation();
+    // const navigate = useNavigate();
+    // const location = useLocation();
     const { loginUser } = useContext(AuthContext);
 
     const handleLogin = (event) => {
@@ -29,7 +30,7 @@ const LogIn = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 })
-                navigate(from, { replace: true });
+                // navigate(from, { replace: true });
             })
 
 

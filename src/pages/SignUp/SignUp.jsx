@@ -20,7 +20,7 @@ const SignUp = () => {
                 console.log(loggedUser)
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email };
+                        const savedUser = { name: data.name, email: data.email, image: data.photoURL };
                         fetch('https://adhi-yoga-meditation-school-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
@@ -31,6 +31,7 @@ const SignUp = () => {
                             .then(res => res.json())
                             .then(data => {
                                 if (data.insertedId) {
+                                    console.log("data", data)
                                     reset();
                                     Swal.fire({
                                         position: 'top-end',
@@ -80,8 +81,8 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Photo Url</span>
                                 </label>
-                                <input type="text" {...register("photoUrl", { required: true })} name="photoUrl" placeholder="Photo Url " className="input input-bordered" />
-                                {errors.photoUrl && <span className='text-red-500'>Photo Url is required</span>}
+                                <input type="text" {...register("photoURL", { required: true })} name="photoURL" placeholder="Photo Url " className="input input-bordered" />
+                                {errors.photoURL && <span className='text-red-500'>Photo Url is required</span>}
                             </div>
 
                             {/* email */}

@@ -7,6 +7,7 @@ import { AuthContext } from '../../../../providers/AuthProvider';
 const PaymentHistory = () => {
     const { user } = useContext(AuthContext);
     const [paymentHistory, setPaymentHistory] = useState([]);
+    console.log("payment history", paymentHistory)
     useEffect(() => {
         fetch(`https://adhi-yoga-meditation-school-server.vercel.app/history/${user?.email}`)
             .then(res => res.json())
@@ -45,7 +46,7 @@ const PaymentHistory = () => {
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={cls.classImage}
+                                            <img src={cls.image}
                                                 alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>

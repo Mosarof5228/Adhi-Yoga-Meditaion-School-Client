@@ -10,8 +10,8 @@ const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInStructor();
-    // const isInstructor = true;
-    // const isAdmin = false;
+    // const isInstructor = false;
+    // const isAdmin = true;
     // const isInstructor = true;
     console.log("admin", isAdmin)
     console.log("instructor", isInstructor)
