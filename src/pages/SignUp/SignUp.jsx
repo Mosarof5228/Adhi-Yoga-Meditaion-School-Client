@@ -55,7 +55,7 @@ const SignUp = () => {
         <>
 
             <Helmet>
-                <title>Bistro Boss | menu</title>
+                <title>Yoga Meditation| Signup</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
 

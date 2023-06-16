@@ -39,7 +39,7 @@ const LogIn = () => {
         <>
 
             <Helmet>
-                <title>Bistro Boss | menu</title>
+                <title>Yoga Meditation | Login</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
 
