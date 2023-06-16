@@ -40,8 +40,8 @@ const Dashboard = () => {
                     ) : (
                         <>
                             <li><NavLink to="/dashboard/mySelectedClasses">My Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/myEnrollClasses">My Enrolled Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/history"> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/myEnrollClass">My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/paymentHistory"> Payment History</NavLink></li>
                         </>
                     )}
 

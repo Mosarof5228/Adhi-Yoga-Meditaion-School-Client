@@ -12,15 +12,6 @@ const Classes = () => {
             .then(data => setData(data));
     }, [])
 
-
-
-    //     0
-    // :
-    // { _id: '6489ed4492131e471f7f72ba', className: 'Md.Tanjil Shordar', price: 55, instructorEmail: 'dfdfd@dfdf.com', classImage: 'https://i.ibb.co/VJrVv8m/Logo-Makr-8ea4-HO.png', … }
-    // length
-    // :
-    // 1
-
     return (
         <div className='my-4 grid grid-cols-2 md:grid-cols-3'>
             {
